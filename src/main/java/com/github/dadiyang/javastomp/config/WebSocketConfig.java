@@ -36,7 +36,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer, Applic
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // 继承DefaultHandshakeHandler并重写determineUser方法，可以自定义如何确定用户，以使用 SendToUser 的功能
+        // 继承DefaultHandshakeHandler并重写determineUser方法，可以自定义如何确定用户
         // 添加方法：registry.addEndpoint("/ws").setHandshakeHandler(handshakeHandler)
         registry.addEndpoint("/ws")
                 .setAllowedOrigins(allowOrigins)
@@ -52,7 +52,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer, Applic
 
         if (brokerConfig.isUseSimpleBroker()) {
             // 使用 SimpleBroker
-            // 配置前缀, 有这些前缀的会路由到broker
+            // 配置前缀, 有这些前缀的消息会路由到broker
             registry.enableSimpleBroker("/topic", "/queue")
                     //配置stomp协议里, server返回的心跳
                     .setHeartbeatValue(new long[]{10000L, 10000L})
@@ -60,7 +60,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer, Applic
                     .setTaskScheduler(new DefaultManagedTaskScheduler());
         } else {
             // 使用外部 Broker
-            // 指定前缀，有这些前缀的会路由到broker
+            // 指定前缀，有这些前缀的消息会路由到broker
             registry.enableStompBrokerRelay("/topic", "/queue")
                     // 广播用户目标，如果要推送的用户不在本地，则通过 broker 广播给集群的其他成员
                     .setUserDestinationBroadcast("/topic/log-unresolved-user")

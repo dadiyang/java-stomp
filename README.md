@@ -23,7 +23,7 @@ Spring 是支持 **WebSocket 集群**的，但是网上很少有资料介绍，�
 
 为此，作者查了许多资料和源码，具体配置可以查看 [WebSocketConfig类](./src/main/java/com/github/dadiyang/javastomp/config/WebSocketConfig.java)，里面有非常详细的注释说明
 
-WebSocket 集群必须依赖**全功能的消息Broker**(full-featured message broker.)，推荐使用 RabbitMq
+WebSocket 集群必须依赖**全功能的消息Broker**(full-featured message broker)，推荐使用 RabbitMQ
 
 ## 安装 RabbitMQ
 
