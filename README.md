@@ -23,7 +23,7 @@ Spring 是支持 **WebSocket 集群**的，但是网上很少有资料介绍，�
 
 为此，作者查了许多资料和源码，具体配置可以查看 [WebSocketConfig类](./src/main/java/com/github/dadiyang/javastomp/config/WebSocketConfig.java)，里面有非常详细的注释说明
 
-WebSocket 集群**必须依赖外部的 Broker**，推荐使用 RabbitMq
+WebSocket 集群必须依赖**全功能的消息Broker**(full-featured message broker.)，推荐使用 RabbitMq
 
 ## 安装 RabbitMQ
 
@@ -59,3 +59,15 @@ location /ws{
 ```
 
 当然，如果不添加此配置，SockJS 会为我们自动降级，也能保证可用，但是性能会降低。
+
+# 参考
+* [Websocket Stomp Handle Broker Relay](https://docs.spring.io/spring/docs/5.1.2.RELEASE/spring-framework-reference/web.html#websocket-stomp-handle-broker-relay)
+* [STOMP Protocol Specification](http://stomp.github.io/stomp-specification-1.1.html#Abstract)
+* [STOMP Over WebSocket](http://jmesnil.net/stomp-websocket/doc/)
+* [CentOS6和CentOS7环境下RabbitMQ安装配置和非ROOT权限启动及集群搭建最完整教程](https://blog.csdn.net/dadiyang/article/details/85774577)
+* [CentOs7.3 搭建 RabbitMQ 3.6 Cluster 集群服务与使用](https://segmentfault.com/a/1190000010702020)
+* [Using RabbitMQ stomp adapter to relay message across subscriptions in different servers](https://stackoverflow.com/questions/41904819/using-rabbitmq-stomp-adapter-to-relay-message-across-subscriptions-in-different/53468085#53468085)
+* [What is MultiServerUserRegistry in spring websocket?
+](https://stackoverflow.com/questions/43251025/what-is-multiserveruserregistry-in-spring-websocket/53631535#53631535)
+* [Spring Websockets Broker relay supporting a cluster of STOMP endpoint addresses](https://github.com/spring-projects/spring-framework/issues/17057)
+* [spring-framework#diff-11144739384955df1f8f38cbcde8d95b](https://github.com/spring-projects/spring-framework/commit/ffbc75ae47936c8668c55332e5b70142279f64ac#diff-11144739384955df1f8f38cbcde8d95b)
