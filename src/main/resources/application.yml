@@ -1,0 +1,23 @@
+server:
+    port: 8025
+spring:
+    profiles:
+      active: dev
+    servlet:
+      multipart:
+         max-file-size: 30MB
+         location: /tmp/
+    thymeleaf:
+        prefix: classpath:/templates/
+        check-template-location: true
+        suffix: .html
+        encoding: UTF-8
+        servlet:
+            content-type: text/html
+        mode: HTML5
+logging:
+    file: ${user.home}/java-stomp/log/wxkf.log
+    file.max-size: 512MB
+    file.max-history: 20
+    level:
+      root: info

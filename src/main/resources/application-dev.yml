@@ -1,0 +1,23 @@
+spring:
+  security:
+      user:
+        # 默认用户
+        name: admin
+        password: 123456
+  thymeleaf:
+      cache: false
+websocket:
+  allow-origins:
+    - "*"
+  broker:
+#    使用 simpleBroker 则不支持 WebSocket 集群
+     use-simple-broker: true
+#    若 use-simple-broker 为 false, 则以下配置必填
+#         username: test¬
+#         password: Passw0rd
+#         virtualHost: "/stomp"
+#         addresses:
+#          - 127.0.0.1:61613
+#          - 127.0.0.1:61613
+logging:
+  level: debug

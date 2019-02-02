@@ -1,0 +1,9 @@
+websocket:
+  broker:
+     use-simple-broker: false
+     username: test
+     password: Passw0rd
+     virtualHost: "/stomp"
+     addresses:
+      - 127.0.0.1:61613
+      - 127.0.0.1:61613

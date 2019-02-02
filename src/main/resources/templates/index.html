@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STOMP</title>
+</head>
+<body>
+<h1 id="tip">Welcome!</h1>
+<p>状态: <span id="status"></span></p>
+<input type="text" id="content" placeholder="请输入要发送的消息"> <br>
+<button onclick="sendTextMsg()">发送</button>
+<ul id="ul">
+</ul>
+<script th:src="@{lib/sockjs.min.js}"></script>
+<script th:src="@{lib/stomp.min.js}"></script>
+<script th:src="@{stomp-client.js}"></script>
+<script>
+    connect(function () {
+        statusChange("连接中...");
+    }, function () {
+        statusChange("在线");
+        // 注意，为防止重连导致重复订阅，请勿使用匿名函数做回调
+        subscribe("/user/topic/subNewMsg", onNewMsg);
+    }, function () {
+        statusChange("离线");
+    });
+
+    function onNewMsg(msg) {
+        var li = document.createElement("li");
+        li.innerText = msg.content;
+        document.getElementById("ul").appendChild(li);
+    }
+
+    function sendTextMsg() {
+        var content = document.getElementById("content").value;
+        var msg = {
+            msgType: 1,
+            content: content
+        };
+        send("/app/echo", msg);
+    }
+
+    function statusChange(status) {
+        document.getElementById("status").innerText = status;
+    }
+</script>
+</body>
+</html>
